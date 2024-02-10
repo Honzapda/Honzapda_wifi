@@ -16,8 +16,8 @@ def admin_main(shopId):
     # MongoDB 연결
     client = MongoClient(config('MONGO_URI'))
 
-    db = client['honzapda_wifi']  
-    collection = db['cafe']  
+    db = client[config('MONGO_DB')]  
+    collection = db[config('MONGO_COLLECTION')]  
 
     index = IndexModel([("expire_at", ASCENDING)], expireAfterSeconds=0)
     collection.create_indexes([index])
